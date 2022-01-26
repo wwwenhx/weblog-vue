@@ -1,16 +1,18 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <el-container>
+        <el-header v-if="$router.name !== 'Login'">Header</el-header>
+        <el-main><router-view/></el-main>
+        <el-footer v-if="$router.name !== 'Login'">Footer</el-footer>
+      </el-container>
     </div>
-    <router-view/>
   </div>
 </template>
 
 <script>
 export default {
-    name: 'App'
+  name: 'App'
 }
 </script>
 

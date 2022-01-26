@@ -7,23 +7,23 @@ axios.defaults.baseURL = 'http://localhost:10010'
 
 // 拦截器
 axios.interceptors.request.use((config) => {
-    if (config.method === 'post') {
-        config.data = this.$qs.parse(config.data)
-    }
+  if (config.method === 'post') {
+    config.data = this.$qs.parse(config.data)
+  }
 },
 (error) => {
-    return Promise.reject(error)
+  return Promise.reject(error)
 })
 
 // 返回状态判断
 axios.interceptors.response.use((res) => {
-    if (!res.data.success) {
-        this.$message(res.data.message)
-        return Promise.reject(res)
-    }
-    return res
+  if (!res.data.success) {
+    this.$message(res.data.message)
+    return Promise.reject(res)
+  }
+  return res
 },
 (error) => {
-    return Promise.reject(error)
+  return Promise.reject(error)
 }
 )
